@@ -1,5 +1,11 @@
-require "foodie_recipes_cli_app/version"
+require 'open-uri'
+require 'pry'
+require 'nokogiri'
 
-module FoodieRecipesCliApp
-  # Your code goes here...
+
+require_relative "foodie_recipes/version"
+require_relative "foodie_recipes/cli"
+require_relative "foodie_recipes/recipes"
+
+module FoodieRecipes
 end

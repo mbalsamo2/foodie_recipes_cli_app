@@ -1,0 +1,3 @@
+class FoodieRecipes::CLI
+
+end
