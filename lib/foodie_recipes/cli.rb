@@ -9,11 +9,7 @@ class FoodieRecipes::CLI
   end
 
   def list_recipes
-    puts <<-DOC
-    1. Food A
-    2. Food B
-    3. Food C
-    DOC
+    @recipes = FoodieRecipes::Recipes.all
   end
 
   def menu
