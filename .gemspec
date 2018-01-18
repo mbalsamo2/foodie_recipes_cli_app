@@ -5,7 +5,7 @@ require "foodie_recipes/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "foodie_recipes_cli_app"
-  spec.version       = FoodieRecipesCliApp::VERSION
+  spec.version       = FoodieRecipes::VERSION
   spec.authors       = ["'Maria Balsamo'"]
   spec.email         = ["'mia.balsamo@gmail.com'"]
 
