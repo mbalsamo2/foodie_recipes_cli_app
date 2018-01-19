@@ -3,47 +3,63 @@ class FoodieRecipes::CLI
   def call
     puts "Welcome to Foodie Recipes, where you will find recipes to inspire your inner chef!"
     list_recipes
+    puts ""
     menu
   end
 
   def list_recipes
     puts "The Best Foodie Recipes:"
-    @recipes = FoodieRecipes::Recipes.all
+    puts ""
+    @recipes = FoodieRecipes::Recipes.scrape_recipes
+    @recipes.each.with_index(1) do |recipe, i|
+      puts "#{i}. #{recipe.name}"
+    end
 
   end
 
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number or name of the recipe you would like to cook, type recipes to see the list of recipes, or type exit:"
+      puts "Enter the number of the recipe you would like to cook, type recipes to see the list of recipes, or type exit:"
       input = gets.strip.downcase
 
-      # if input.to_i > 0
-      #   puts @recipes[input.to_i - 1]
-      # elsif input == "recipes"
-      #   list_recipes
-      # else
-      #   puts "Not an available option. Try again."
-      # end
-      case input
-      when "1"
-        puts "Food A instructions and ingredients:"
-      when "2"
-        puts "Food B instructions and ingredients:"
-      when "3"
-        puts "Food C instructions and ingredients:"
-      when "recipes"
+      if input.to_i > 0
+        the_recipe = @recipes[input.to_i - 1]
+        puts ""
+        puts "Recipe Name: #{the_recipe.name}"
+        puts "Recipe URL: #{the_recipe.url}"
+        puts "Recipe Ingredients: #{the_recipe.ingredients}"
+        puts "Recipe Instructions: #{the_recipe.instructions}"
+        puts ""
+      elsif input == "recipes"
         list_recipes
-      when "exit"
+      elsif input == "exit"
         goodbye
       else
         puts "Not an available option. Try again."
       end
+
+      # case input
+      # when "1"
+      #   puts "Food A instructions and ingredients:"
+      # when "2"
+      #   puts "Food B instructions and ingredients:"
+      # when "3"
+      #   puts "Food C instructions and ingredients:"
+      # when "recipes"
+      #   list_recipes
+      # when "exit"
+      #   goodbye
+      # else
+      #   puts "Not an available option. Try again."
+      # end
     end
   end
 
   def goodbye
+    puts ""
     puts "Happy cooking!"
+    puts ""
   end
 
 end
