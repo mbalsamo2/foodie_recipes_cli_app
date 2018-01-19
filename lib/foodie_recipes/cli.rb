@@ -26,7 +26,7 @@ class FoodieRecipes::CLI
       if input.to_i > 0
         the_recipe = @recipes[input.to_i - 1]
         puts ""
-        puts "Recipe Name: #{the_recipe.name}"
+        puts "----------- #{the_recipe.name} -----------"
         puts "Recipe URL: #{the_recipe.url}"
         puts "Recipe Ingredients: #{the_recipe.ingredients}"
         puts "Recipe Instructions: #{the_recipe.instructions}"
@@ -38,21 +38,6 @@ class FoodieRecipes::CLI
       else
         puts "Not an available option. Try again."
       end
-
-      # case input
-      # when "1"
-      #   puts "Food A instructions and ingredients:"
-      # when "2"
-      #   puts "Food B instructions and ingredients:"
-      # when "3"
-      #   puts "Food C instructions and ingredients:"
-      # when "recipes"
-      #   list_recipes
-      # when "exit"
-      #   goodbye
-      # else
-      #   puts "Not an available option. Try again."
-      # end
     end
   end
 

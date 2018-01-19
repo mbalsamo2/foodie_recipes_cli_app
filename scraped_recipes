@@ -1,0 +1,29 @@
+
+[1mFrom:[0m /home/mbalsamo2/temporary/foodie_recipes_cli_app/lib/foodie_recipes/recipes.rb @ line 36 FoodieRecipes::Recipes.scrape_recipe_info:
+
+    [1;34m25[0m: [32mdef[0m [1;36mself[0m.[1;34mscrape_recipe_info[0m
+    [1;34m26[0m:   scraped_recipes = []
+    [1;34m27[0m: 
+    [1;34m28[0m:   doc = [1;34;4mNokogiri[0m::HTML(open([31m[1;31m"[0m[31mhttps://www.browneyedbaker.com/category/recipes/main-dish-recipes/chicken-recipes/[1;31m"[0m[31m[0m))
+    [1;34m29[0m: 
+    [1;34m30[0m:   doc.css([31m[1;31m"[0m[31mdiv.archive-post[1;31m"[0m[31m[0m).each [32mdo[0m |recipe_attr|
+    [1;34m31[0m:   scraped_recipes << {
+    [1;34m32[0m:       [33m:name[0m => recipe_attr.css([31m[1;31m"[0m[31mh4[1;31m"[0m[31m[0m).text,
+    [1;34m33[0m:       [33m:url[0m => recipe_attr.css([31m[1;31m"[0m[31ma[1;31m"[0m[31m[0m).attribute([31m[1;31m"[0m[31mhref[1;31m"[0m[31m[0m).value
+    [1;34m34[0m:   }
+    [1;34m35[0m:   [32mend[0m
+ => [1;34m36[0m:   binding.pry
+    [1;34m37[0m:   scraped_recipes
+    [1;34m38[0m: 
+    [1;34m39[0m:   links = doc.css([31m[1;31m"[0m[31mdiv.archive-post a[1;31m"[0m[31m[0m).map [32mdo[0m |i|
+    [1;34m40[0m:     i.attribute([31m[1;31m"[0m[31mhref[1;31m"[0m[31m[0m).value
+    [1;34m41[0m:   [32mend[0m
+    [1;34m42[0m: 
+    [1;34m43[0m:   links.map [32mdo[0m |recipe_url|
+    [1;34m44[0m:     recipe_info = [1;34;4mNokogiri[0m::HTML(open([31m[1;31m"[0m[31m#{recipe_url}[0m[31m[1;31m"[0m[31m[0m))
+    [1;34m45[0m:       recipe.ingredients = recipe_info.css([31m[1;31m"[0m[31mdiv.recipe div.ingredients ul[1;31m"[0m[31m[0m).text.scan([35m[1;35m/[0m[35m[^[1;35m\d[0m[35m]*[1;35m\d[0m[35m[1;35m/[0m[35m[0m)
+    [1;34m46[0m:       recipe.instructions = recipe_info.css([31m[1;31m"[0m[31mdiv.instructions[1;31m"[0m[31m[0m).text
+    [1;34m47[0m:   [32mend[0m
+    [1;34m48[0m:   recipe
+    [1;34m49[0m: [32mend[0m
+

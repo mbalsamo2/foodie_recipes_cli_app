@@ -28,6 +28,7 @@ class FoodieRecipes::Recipes
     recipe = self.new
 
     doc.css("div.archive-post").each do |recipe_attr|
+
         recipe.name = recipe_attr.css("h4").text
         recipe.url = recipe_attr.css("a").attribute("href").value
     end
@@ -38,7 +39,7 @@ class FoodieRecipes::Recipes
 
     links.map do |recipe_url|
       recipe_info = Nokogiri::HTML(open("#{recipe_url}"))
-        recipe.ingredients = recipe_info.css("div.recipe div.ingredients ul").text
+        recipe.ingredients = recipe_info.css("div.recipe div.ingredients ul").text.scan(/[^\d]*\d/)
         recipe.instructions = recipe_info.css("div.instructions").text
     end
     recipe
