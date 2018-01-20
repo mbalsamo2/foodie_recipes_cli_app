@@ -2,13 +2,14 @@ class FoodieRecipes::Recipes
   attr_accessor :name, :ingredients, :instructions, :url
 
   @@storage = []
+  @@recipes = []
 
   def self.scrape_recipes
-    recipes = []
+    @recipes = []
 
-    recipes << self.scrape_recipe_info
+    @recipes << self.scrape_recipe_info
 
-    recipes
+    @recipes
   end
 
   def self.scrape_recipe_info
