@@ -4,14 +4,20 @@ class FoodieRecipes::Scraper
     Nokogiri::HTML(open("https://www.browneyedbaker.com/category/recipes/main-dish-recipes/chicken-recipes/"))
   end
 
-  def scrape_the_recipes
+  def scrape_recipe_index
     self.get_website.css("div.archive-post")
   end
 
-  def create_recipes
-    scrape_the_recipes.each do |recipe|
-      #initialize recipe within recipe.rb
+  def scrape_recipe_info
+    scrape_recipe_index.each do |recipe|
+      FoodieRecipes::Recipes.new_from_scraper(recipe)
     end
   end
 
 end
+
+# recipe_info = Nokogiri::HTML(open("#{url}"))
+# each_ingredients = recipe_info.css("li.ingredient").map { |ingr| ingr.text}
+# new_ingr = each_ingredients.join("\n")
+# ingredients = new_ingr
+# instructions = recipe_info.css("div.instructions").text

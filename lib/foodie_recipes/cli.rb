@@ -10,7 +10,7 @@ class FoodieRecipes::CLI
   def list_recipes
     puts "The Best Foodie Recipes:"
     puts ""
-    @recipes = FoodieRecipes::Recipes.scrape_recipes
+    @recipes = FoodieRecipes::Recipes.all
     @recipes.each.with_index(1) do |recipe, i|
       puts "#{i}. #{recipe.name}"
     end
@@ -30,11 +30,11 @@ class FoodieRecipes::CLI
         puts "Recipe URL: #{the_recipe.url}"
         puts ""
         puts "Recipe Ingredients:"
-        puts "#{the_recipe.ingredients}"
-        puts ""
+        # puts "#{the_recipe.ingredients}"
+        # puts ""
         puts "Recipe Instructions:"
-        puts "#{the_recipe.instructions}"
-        puts ""
+        # puts "#{the_recipe.instructions}"
+        # puts ""
       elsif input == "recipes"
         list_recipes
       elsif input == "exit"

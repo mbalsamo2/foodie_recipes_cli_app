@@ -1,13 +1,23 @@
 class FoodieRecipes::Recipes
   attr_accessor :name, :ingredients, :instructions, :url
 
+  @@all = []
 
-  def initialize(name = nil, url = nil, ingredients = nil, instructions = nil)
+  def initialize(name = nil, url = nil)
     @name = name
     @url = url
-    @ingredients = ingredients
-    @instructions = instructions
+    @@all << self
   end
+
+  def self.new_from_scraper(recipe)
+    self.new(recipe.css("h4").text, recipe.css("a").attribute("href").value)
+  end
+
+  def self.all
+    @@all
+
+  end
+
   # def self.scrape_recipes
   #   @recipes = []
   #
