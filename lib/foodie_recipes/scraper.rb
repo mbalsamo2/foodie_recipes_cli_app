@@ -1,0 +1,2 @@
+class FoodieRecipes::Recipes
+end
