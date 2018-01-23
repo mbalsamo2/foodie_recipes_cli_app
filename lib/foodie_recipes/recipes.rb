@@ -15,7 +15,6 @@ class FoodieRecipes::Recipes
 
   def self.all
     @@all
-
   end
 
   # def self.scrape_recipes

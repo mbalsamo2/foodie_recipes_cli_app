@@ -10,10 +10,7 @@ class FoodieRecipes::CLI
   def list_recipes
     puts "The Best Foodie Recipes:"
     puts ""
-    @recipes = FoodieRecipes::Recipes.all
-    @recipes.each.with_index(1) do |recipe, i|
-      puts "#{i}. #{recipe.name}"
-    end
+    FoodieRecipes::Scraper.scrape_recipe_info
 
   end
 
@@ -24,7 +21,7 @@ class FoodieRecipes::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        the_recipe = @recipes[input.to_i - 1]
+        # the_recipe = @recipes[input.to_i - 1]
         puts ""
         puts "----------- #{the_recipe.name} -----------"
         puts "Recipe URL: #{the_recipe.url}"
