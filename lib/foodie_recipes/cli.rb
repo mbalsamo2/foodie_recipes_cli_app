@@ -11,10 +11,7 @@ class FoodieRecipes::CLI
     puts "The Best Foodie Recipes:"
     puts ""
     @recipes = FoodieRecipes::Recipes.scrape_recipes
-    @recipes.each.with_index(1) do |recipe, i|
-      puts "#{i}. #{recipe.name}"
-    end
-
+    puts "1. #{@recipes.name}"
   end
 
   def menu
@@ -23,17 +20,16 @@ class FoodieRecipes::CLI
       puts "Enter the number of the recipe you would like to cook, type recipes to see the list of recipes, or type exit:"
       input = gets.strip.downcase
 
-      if input.to_i > 0
-        the_recipe = @recipes[input.to_i - 1]
+      if input.to_i == 1
         puts ""
-        puts "----------- #{the_recipe.name} -----------"
-        puts "Recipe URL: #{the_recipe.url}"
+        puts "----------- #{@recipes.name} -----------"
+        puts "Recipe URL: #{@recipes.url}"
         puts ""
         puts "Recipe Ingredients:"
-        puts "#{the_recipe.ingredients}"
+        puts "#{@recipes.ingredients}"
         puts ""
         puts "Recipe Instructions:"
-        puts "#{the_recipe.instructions}"
+        puts "#{@recipes.instructions}"
         puts ""
       elsif input == "recipes"
         list_recipes
