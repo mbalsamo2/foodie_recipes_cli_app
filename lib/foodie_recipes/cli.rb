@@ -45,7 +45,8 @@ class FoodieRecipes::CLI
       elsif input == "exit"
         goodbye
       else
-        puts "Not an available option. Try again."
+        puts "Not an available option. Type recipes to see the list of recipes, or type exit."
+        FoodieRecipes::Recipes.destroy_all
       end
     end
   end
