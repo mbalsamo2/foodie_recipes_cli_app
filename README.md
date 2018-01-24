@@ -1,26 +1,14 @@
 # FoodieRecipesCliApp
 
-This gem lists recipes. You can choose a recipe by list number or by recipe name. Once chosen, it will provide the ingredients and instructions to make that recipe. Upon finishing, you can either exit, or choose another recipe to make.
+This Ruby Gem provides a CLI to view 12 of the top recipes from a famous food blogger.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'foodie_recipes_cli_app'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install foodie_recipes_cli_app
+    $ bundle install
 
 ## Usage
 
-TODO: Write usage instructions here
+Run: To run type ./bin/foodie_recipes into your terminal.
 
 ## Development
 
