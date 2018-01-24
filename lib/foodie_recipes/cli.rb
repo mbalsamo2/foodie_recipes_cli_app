@@ -40,6 +40,8 @@ class FoodieRecipes::CLI
         FoodieRecipes::Recipes.destroy_all
       elsif input == "recipes"
         list_recipes
+        puts ""
+        puts "Enter the number of the recipe you would like to cook, type recipes to see the list of recipes, or type exit:"
       elsif input == "exit"
         goodbye
       else
