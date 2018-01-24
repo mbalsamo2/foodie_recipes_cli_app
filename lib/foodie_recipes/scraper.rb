@@ -15,9 +15,3 @@ class FoodieRecipes::Scraper
   end
 
 end
-
-# recipe_info = Nokogiri::HTML(open("#{url}"))
-# each_ingredients = recipe_info.css("li.ingredient").map { |ingr| ingr.text}
-# new_ingr = each_ingredients.join("\n")
-# ingredients = new_ingr
-# instructions = recipe_info.css("div.instructions").text
