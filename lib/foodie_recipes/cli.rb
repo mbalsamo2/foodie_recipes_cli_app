@@ -23,7 +23,7 @@ class FoodieRecipes::CLI
     while input != "exit"
       input = gets.strip.downcase
 
-      if input.to_i > 0 && input.to_i < 13
+      if input.to_i > 0 && input.to_i <= @recipes.size
         the_recipe = @recipes[input.to_i - 1]
         puts ""
         puts "----------- #{the_recipe.name} -----------"
