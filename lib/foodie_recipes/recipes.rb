@@ -17,14 +17,27 @@ class FoodieRecipes::Recipes
     @@all
   end
 
-  # def self.scrape_recipes
-  #   @recipes = []
-  #
-  #   @recipes << self.scrape_recipe_info
-  #
-  #   @recipes
-  # end
-  #
+  def ingredients
+    @ingredients ||= self.ingredient_info
+  end
+
+  def instructions
+    @instructions ||= doc.css("div.instructions").text
+  end
+
+  def ingredient_info
+    ingredients = doc.css("li.ingredient").map { |ingr| ingr.text}
+    new_ingr = ingredients.join("\n")
+    new_ingr
+  end
+
+  def doc
+    @doc ||= Nokogiri::HTML(open(self.url))
+  end
+
+  def self.destroy_all
+    @@all.clear
+  end
   # def self.scrape_recipe_info
   #   recipe = self.new
   #

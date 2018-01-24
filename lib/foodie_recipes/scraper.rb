@@ -5,7 +5,7 @@ class FoodieRecipes::Scraper
   end
 
   def scrape_recipe_index
-    self.get_website.css("div.archive-post")[0..14]
+    self.get_website.css("div.archive-post")[0..11]
   end
 
   def scrape_recipe_info
