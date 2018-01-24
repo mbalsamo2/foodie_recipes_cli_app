@@ -10,8 +10,11 @@ class FoodieRecipes::CLI
   def list_recipes
     puts "The Best Foodie Recipes:"
     puts ""
-    FoodieRecipes::Scraper.scrape_recipe_info
-
+    FoodieRecipes::Scraper.new.scrape_recipe_info
+    @recipes = FoodieRecipes::Recipes.all
+    @recipes.each.with_index(1) do |recipe, i|
+      puts "#{i}. #{recipe.name}"
+    end
   end
 
   def menu
