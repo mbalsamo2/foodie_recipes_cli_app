@@ -8,7 +8,9 @@ class FoodieRecipes::CLI
   end
 
   def list_recipes
+    puts ""
     puts "The Best Foodie Recipes:"
+    puts "------------------------"
     puts ""
     FoodieRecipes::Scraper.new.scrape_recipe_info
     @recipes = FoodieRecipes::Recipes.all
@@ -30,9 +32,11 @@ class FoodieRecipes::CLI
         puts "Recipe URL: #{the_recipe.url}"
         puts ""
         puts "Recipe Ingredients:"
+        puts "-------------------"
         puts "#{the_recipe.ingredients}"
         puts ""
         puts "Recipe Instructions:"
+        puts "--------------------"
         puts "#{the_recipe.instructions}"
         puts ""
         puts ""
