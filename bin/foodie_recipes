@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/foodie_recipes'
+require_relative '../lib/foodie_recipes'
 
 FoodieRecipes::CLI.new.call
